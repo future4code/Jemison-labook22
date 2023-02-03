@@ -1,0 +1,26 @@
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+	"name": "Izabel",
+	"email": "izabel@gmail.com",
+	"password": "green"
+}
+###
+POST http://localhost:3003/posts
+Content-Type: application/json
+
+{
+    "photo": "Imagem psicodelico",
+    "description": "O admirável mundo novo psicodélico",
+    "type": "event"
+}
+
+###
+GET http://localhost:3003/friends
+Content-Type: application/json
+
+
+###
+GET http://localhost:3003/posts
+Content-Type: application/json
