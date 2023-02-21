@@ -19,4 +19,15 @@ export class FriendshipController {
       );
     }
   }
+  async deslike(req: Request, res: Response): Promise<void>{
+    try{
+
+      const friendshipBusiness = new FriendshipBusiness()
+      await friendshipBusiness.deslike({ user: req.body.user, friendship: req.body.friendship })
+
+      res.status(200).send("Deslike")
+    }catch(error: any){
+      throw new CustomError(error.statusCode || 400, error.message || error.sqlMessage)
+    }
+  }
 }

@@ -13,7 +13,8 @@ Content-Type: application/json
 {
     "photo": "Imagem psicodelico",
     "description": "O admirável mundo novo psicodélico",
-    "type": "event"
+    "type": "event",
+    "authorId": ""
 }
 
 ###
@@ -21,12 +22,10 @@ GET http://localhost:3003/friends
 Content-Type: application/json
 
 {
-    "id": ""
+    "user": "",
+    "friendship": ""
 }
 ###
 GET http://localhost:3003/posts
 Content-Type: application/json
 
-{
-    "id": ""
-}

@@ -10,7 +10,7 @@ const userDatabase = new UserDatabase();
 const authenticator = new Authenticator();
 const hashManager = new HashManager();
 
-export class UsersBusiness {
+export class UserBusiness {
   async create({ name, email, password }: CreateUserDTO): Promise<void> {
     try {
       if (!name || !email || !password) {
