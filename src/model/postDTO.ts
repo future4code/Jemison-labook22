@@ -1,4 +1,8 @@
-import { POST_TYPES } from "./post";
+enum POST_TYPES {
+    NORMAL = "normal",
+    EVENT = "event"
+}
+
 export interface InsertPostDTO {
   id: string;
   photo: string;

@@ -23,6 +23,7 @@ export class Migration extends BaseDatabase{
       CREATE TABLE labook_friend (
          user VARCHAR(255),
          friendship VARCHAR(255),
+         PRIMARY KEY(user,friendship),
          FOREIGN KEY(user) REFERENCES labook_users(id),
          FOREIGN KEY(friendship) REFERENCES labook_users(id)
       );

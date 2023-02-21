@@ -20,4 +20,14 @@ export class FriendshipDatabase extends BaseDatabase {
       );
     }
   }
+   async deslike({ user, friends }: FriendshipDTO): Promise<void> {
+    try {
+         await FriendshipDatabase.connection
+         .delete()
+         .from(FriendshipDatabase.TABLE_FRIEND)
+           .where("user", user)
+    }catch (error: any) {
+      throw new CustomError(error.statusCode || 400, error.message || error.sqlMessage)
+    }
+  }
 }

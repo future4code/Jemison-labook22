@@ -5,4 +5,5 @@ export const friendshipRouter = express.Router();
 
 const friendshipController = new FriendshipController();
 
-friendshipRouter.post("/friend", friendshipController.friend);
+friendshipRouter.post("/friendship", friendshipController.friend);
+friendshipRouter.post("/deslike", friendshipController.deslike);

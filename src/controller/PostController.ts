@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { PostBusiness } from "./../business/PostBusiness";
 import { CustomError } from "./../error/CustomError";
-import { postDB } from "../model/post";
 
 export class PostController {
   async create(req: Request, res: Response): Promise<void> {
@@ -23,18 +22,38 @@ export class PostController {
     }
   }
 
-  async getById(req: Request, res: Response): Promise<void> {
+  async getPost(req:Request, res:Response): Promise<void> {
     try {
-      const id = req.params.id;
-
       const postBusiness = new PostBusiness();
-      const post: postDB = await postBusiness.getById(id);
+      const post = await postBusiness.getPost();
 
-      res.status(200).send(post);
+      res.status(200).send(post)
+
     } catch (error: any) {
-      res
-        .status(error.statusCode || 400)
-        .send(error.message || error.sqlMessage);
+      throw new CustomError(error.statusCode || 400, error.message || error.sqlMessage)
+    }
+  }
+
+  async getId(req:Request, res:Response): Promise<void>{
+    try{
+      const postBusiness = new PostBusiness()
+      const post = await postBusiness.getId({id: req.body.id})
+
+    }catch(error: any){
+      throw new CustomError(error.statusCode || 400, error.message || error.sqlMessage)
+    }
+  }
+
+  async postFriends(req: Request, res: Response): Promise<void>{
+    try{
+      const postBusiness = new PostBusiness()
+      const result = await postBusiness.postFriends({id: req.body, user: req.body})
+
+      res.status(200).send(result)
+
+       }catch(error: any){
+        throw new CustomError(error.statusCode || 400, error.message || error.sqlMessage)
     }
   }
 }
+
